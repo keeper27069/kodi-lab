@@ -189,7 +189,6 @@ function timing(tr: Transition | undefined, frames: number) {
   const spring = t.type === 'spring' || (!t.duration && !t.ease && frames <= 2 && t.type !== 'tween');
   let duration = (t.duration ?? (spring ? 0.45 : 0.3)) * 1000;
   let easing = Array.isArray(t.ease) ? `cubic-bezier(${t.ease.join(',')})` : t.ease ? EASE[t.ease] ?? 'ease' : spring ? 'cubic-bezier(0.22, 1, 0.36, 1)' : 'cubic-bezier(0.25, 0.1, 0.25, 1)';
-  if (spring && t.damping !== undefined && t.damping < 14) easing = 'cubic-bezier(0.34, 1.45, 0.64, 1)';
   if (spring && t.stiffness && t.stiffness > 200) duration = Math.min(duration, 320);
   return {
     duration,

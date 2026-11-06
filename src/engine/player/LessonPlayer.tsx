@@ -8,7 +8,7 @@ import { Stage } from './Stage';
 import { TopBar } from './TopBar';
 import { SceneOverview } from './SceneOverview';
 import { NotesOverlay } from './NotesOverlay';
-import { Kodi, playGlitch } from './Kodi';
+import { Kodi } from './Kodi';
 import { useUi } from '@/i18n';
 
 const VOICE_KEY = 'kodi:voice';
@@ -63,15 +63,6 @@ export function LessonPlayer({ lesson, meta, locale, initialScene, onSceneChange
       if (v && typeof speechSynthesis !== 'undefined') speechSynthesis.cancel();
       return !v;
     });
-  const firstScene = useRef(true);
-  useEffect(() => {
-    if (firstScene.current) {
-      firstScene.current = false;
-      return;
-    }
-    if (voiceOn) playGlitch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sceneIndex]);
 
   const content = lesson.content[locale];
   const scene = lesson.scenes[sceneIndex];
@@ -245,8 +236,8 @@ export function LessonPlayer({ lesson, meta, locale, initialScene, onSceneChange
                 data-dir={direction}
                 initial={false}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: [1, 1, 0.85, 0], x: [0, -10, 8, 0] }}
-                transition={{ duration: 0.2, ease: 'linear' }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.16, ease: 'easeOut' }}
               >
                 <SceneContext.Provider
                   value={{ key: scene.key, index: sceneIndex, storeKey: `${lesson.id}:${scene.key}`, text }}
