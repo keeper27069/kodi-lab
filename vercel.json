@@ -1,0 +1,7 @@
+{
+  "framework": null,
+  "installCommand": "echo 'prebuilt: nothing to install'",
+  "buildCommand": "echo 'prebuilt: dist/ is committed (node scripts/build-kodi.mjs)'",
+  "outputDirectory": "dist",
+  "cleanUrls": false
+}

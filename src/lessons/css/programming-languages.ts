@@ -1,0 +1,151 @@
+import { kit } from '@engine/kit';
+
+const CSS = `.wrap{display:grid;place-items:center;height:100%;font-family:Manrope,system-ui}
+.term{width:440px;border-radius:18px;background:#1d1f2b;color:#e6e8ee;padding:22px 26px;box-shadow:0 10px 30px #0003}
+.top{display:flex;align-items:center;gap:12px;font-weight:800;font-size:22px;margin-bottom:16px}.top b{font-size:40px}
+.out{font:700 34px JetBrains Mono,monospace;color:#7ee0b0}.out::before{content:'> ';color:#6b7183}`;
+const term = (icon: string, name: string) => `<div class="wrap"><div class="term"><div class="top"><b>${icon}</b>${name}</div><div class="out">Hello!</div></div></div>`;
+
+export default kit({
+  id: 'css-g06',
+  title: "Почему языков программирования сотни ¦ Nega dasturlash tillari yuzlab ¦ Why there are hundreds of programming languages",
+  question: "Зачем столько языков, если компьютер один? ¦ Kompyuter bitta bo'lsa, nega shuncha ko'p til? ¦ Why so many languages when there's one computer?",
+  route: ["Инструменты ¦ Asboblar ¦ Tools", "Один «привет» ¦ Bitta «salom» ¦ One “hello”", "Кто для чего ¦ Kim nima uchun ¦ Who does what", "Перевод ¦ Tarjima ¦ Translation", "Финал ¦ Yakun ¦ Finale"],
+  scenes: [
+    {
+      type: 'intro',
+      stage: 0,
+      icon: '🧰',
+      kicker: "CSS · общая тема 6 ¦ CSS · umumiy mavzu 6 ¦ CSS · general topic 6",
+      title: "Языки — как инструменты в ящике ¦ Tillar — qutidagi asboblarga o'xshaydi ¦ Languages are like tools in a box",
+      chat: "какие языки программирования вы знаете? ¦ qaysi dasturlash tillarini bilasiz? ¦ which programming languages do you know?",
+      lead: "Молотком не закрутить шуруп, а отвёрткой не забить гвоздь. Так и с языками: каждый удобен для своей работы. ¦ Bolg'a bilan vintni burab bo'lmaydi, otvyortka bilan mix qoqib bo'lmaydi. Tillar ham shunday: har biri o'z ishi uchun qulay. ¦ You can't drive a screw with a hammer or a nail with a screwdriver. Languages are the same: each suits its own job.",
+      facts: ["Языков — сотни ¦ Tillar — yuzlab ¦ There are hundreds", "Популярных — около 10 ¦ Mashhurlari — 10 ga yaqin ¦ About 10 are popular", "Начать можно с любого ¦ Istalganidan boshlash mumkin ¦ You can start with any"],
+      takeaway: "Посмотрим на ящик с инструментами программиста. ¦ Dasturchining asboblar qutisiga qaraymiz. ¦ Let's open a programmer's toolbox.",
+      notes: { min: 3 },
+    },
+    {
+      type: 'animate',
+      stage: 1,
+      title: "Каждой задаче — свой инструмент ¦ Har bir vazifaga — o'z asbobi ¦ Each job has its tool",
+      chat: "что хотите сделать вы: сайт, игру или приложение? ¦ siz nima qilmoqchisiz: sayt, o'yin yoki ilova? ¦ what do you want to build: a site, a game or an app?",
+      actors: [
+        { id: 'site', icon: '🌐', label: "Сайт ¦ Sayt ¦ Website" },
+        { id: 'phone', icon: '📱', label: "Приложение ¦ Ilova ¦ Phone app" },
+        { id: 'ai', icon: '🤖', label: "Нейросеть ¦ Neyrotarmoq ¦ AI" },
+        { id: 'game', icon: '🎮', label: "Игра ¦ O'yin ¦ Game" },
+        { id: 'js', text: "HTML · CSS · JavaScript" },
+        { id: 'sw', text: "Swift · Kotlin" },
+        { id: 'py', text: "Python" },
+        { id: 'cs', text: "C# · C++" },
+      ],
+      steps: [
+        { say: "Вот 4 вещи, которые люди часто хотят сделать. ¦ Mana odamlar tez-tez qilishni xohlaydigan 4 ta narsa. ¦ Here are 4 things people often want to build.", at: { site: [14, 30], phone: [38, 30], ai: [62, 30], game: [86, 30] } },
+        { say: "Сайты — HTML, CSS и JavaScript. Это наш путь! ¦ Saytlar — HTML, CSS va JavaScript. Bu bizning yo'limiz! ¦ Websites: HTML, CSS and JavaScript. That's our path!", at: { js: [14, 72] }, lines: [['site', 'js']], pulse: ['site'] },
+        { say: "Приложения для телефона — Swift (iPhone) и Kotlin (Android). ¦ Telefon ilovalari — Swift (iPhone) va Kotlin (Android). ¦ Phone apps: Swift (iPhone) and Kotlin (Android).", at: { sw: [38, 72] }, lines: [['site', 'js'], ['phone', 'sw']], pulse: ['phone'] },
+        { say: "Нейросети и работа с данными — Python. ¦ Neyrotarmoqlar va ma'lumotlar bilan ishlash — Python. ¦ AI and data: Python.", at: { py: [62, 72] }, lines: [['site', 'js'], ['phone', 'sw'], ['ai', 'py']], pulse: ['ai'] },
+        { say: "Игры — C# и C++. ¦ O'yinlar — C# va C++. ¦ Games: C# and C++.", at: { cs: [86, 72] }, lines: [['site', 'js'], ['phone', 'sw'], ['ai', 'py'], ['game', 'cs']], pulse: ['game'] },
+      ],
+      takeaway: "Выбирают язык под задачу, а не «самый лучший». ¦ Tilni «eng yaxshisi» emas, vazifaga qarab tanlashadi. ¦ You pick a language for the job, not “the best” one.",
+      notes: { min: 5 },
+    },
+    {
+      type: 'show',
+      stage: 2,
+      title: "Один «привет» на разных языках ¦ Turli tillarda bitta «salom» ¦ One “hello” in different languages",
+      chat: "какой вариант кажется самым простым? ¦ qaysi variant eng oddiy tuyuladi? ¦ which version looks simplest?",
+      lang: 'js',
+      css: CSS,
+      steps: [
+        { code: 'print("Hello!")', lang: 'text', html: term('🐍', 'Python'), say: "Python — почти как обычный английский. ¦ Python — deyarli oddiy inglizchaga o'xshaydi. ¦ Python reads almost like plain English." },
+        { code: 'console.log("Hello!");', lang: 'js', html: term('🟨', 'JavaScript'), say: "JavaScript — язык, который оживляет сайты. ¦ JavaScript — saytlarni jonlantiradigan til. ¦ JavaScript is the language that brings sites to life." },
+        { code: 'using System;\nclass App {\n  static void Main() {\n    Console.WriteLine("Hello!");\n  }\n}', lang: 'js', line: 4, html: term('🎮', 'C#'), say: "C# — больше строк, но зато на нём делают игры. ¦ C# — ko'proq qator, lekin unda o'yinlar yasashadi. ¦ C# needs more lines, but games are made with it." },
+        { code: 'print("Hello!")\nconsole.log("Hello!");\nConsole.WriteLine("Hello!");', lang: 'js', html: term('🤝', 'Same result'), say: "Разные слова — один и тот же результат. ¦ So'zlar har xil — natija bir xil. ¦ Different words, same result." },
+      ],
+      takeaway: "Языки похожи: выучив один, второй даётся легче. ¦ Tillar o'xshash: birini o'rgansangiz, ikkinchisi osonroq bo'ladi. ¦ Languages are alike: learn one and the next is easier.",
+      notes: { min: 5 },
+    },
+    {
+      type: 'sort',
+      stage: 3,
+      title: "Какой язык для чего? ¦ Qaysi til nima uchun? ¦ Which language for what?",
+      chat: "пишите: «1 — сайт» ¦ yozing: «1 — sayt» ¦ write: “1 — website”",
+      zones: [
+        { id: 'web', label: "Сайты ¦ Saytlar ¦ Websites", icon: '🌐' },
+        { id: 'ai', label: "Нейросети ¦ Neyrotarmoqlar ¦ AI", icon: '🤖' },
+        { id: 'app', label: "Телефон и игры ¦ Telefon va o'yinlar ¦ Phones & games", icon: '📱' },
+      ],
+      items: [
+        { text: 'CSS', zone: 'web' },
+        { text: 'Python', zone: 'ai' },
+        { text: 'Swift', zone: 'app' },
+        { text: 'JavaScript', zone: 'web' },
+        { text: 'C#', zone: 'app', why: "На C# пишут игры в Unity. ¦ C#'da Unity'da o'yinlar yozishadi. ¦ C# is used for Unity games." },
+      ],
+      notes: { min: 4 },
+    },
+    {
+      type: 'animate',
+      stage: 4,
+      title: "Как компьютер понимает язык ¦ Kompyuter tilni qanday tushunadi ¦ How a computer understands a language",
+      chat: "как думаете, компьютер знает английский? ¦ sizningcha, kompyuter inglizchani biladimi? ¦ do you think a computer knows English?",
+      actors: [
+        { id: 'code', icon: '📝', label: "Ваш код ¦ Sizning kodingiz ¦ Your code" },
+        { id: 'tr', icon: '🔁', label: "Переводчик ¦ Tarjimon ¦ Translator" },
+        { id: 'bits', text: "0101 1100" },
+        { id: 'pc', icon: '💻', label: "Компьютер ¦ Kompyuter ¦ Computer" },
+        { id: 'res', text: "Hello! ✅" },
+      ],
+      steps: [
+        { say: "Мы пишем код словами: print, console.log… ¦ Biz kodni so'zlar bilan yozamiz: print, console.log… ¦ We write code in words: print, console.log…", at: { code: [12, 50, 1.2] } },
+        { say: "Специальная программа-переводчик читает его… ¦ Maxsus tarjimon dastur uni o'qiydi… ¦ A special translator program reads it…", at: { tr: [36, 50] }, lines: [['code', 'tr']], pulse: ['tr'] },
+        { say: "…и превращает в нули и единицы — язык компьютера. ¦ …va uni nol va birlarga aylantiradi — kompyuter tiliga. ¦ …and turns it into zeros and ones — the computer's language.", at: { bits: [62, 50] }, lines: [['code', 'tr'], ['tr', 'bits']] },
+        { say: "Компьютер выполняет — и мы видим результат! ¦ Kompyuter bajaradi — va biz natijani ko'ramiz! ¦ The computer runs it and we see the result!", at: { pc: [86, 50], res: [86, 22] }, lines: [['code', 'tr'], ['tr', 'bits'], ['bits', 'pc']], pulse: ['pc'] },
+      ],
+      takeaway: "Любой язык в итоге превращается в 0 и 1. ¦ Har qanday til oxir-oqibat 0 va 1 ga aylanadi. ¦ Every language ends up as 0s and 1s.",
+      notes: { min: 4 },
+    },
+    {
+      type: 'truefalse',
+      stage: 4,
+      title: "Правда или миф? ¦ Rostmi yoki afsona? ¦ True or myth?",
+      chat: "пишите «правда» или «миф» ¦ «rost» yoki «afsona» deb yozing ¦ write “true” or “myth”",
+      statements: [
+        { text: "Нужно выучить все языки ¦ Barcha tillarni o'rganish kerak ¦ You must learn every language", truth: false, explain: "Хватит 1–2 под вашу цель. ¦ Maqsadingizga 1–2 ta yetadi. ¦ 1–2 for your goal are enough." },
+        { text: "Есть один «самый лучший» язык ¦ Bitta «eng yaxshi» til bor ¦ There's one “best” language", truth: false, explain: "Есть лучший для конкретной задачи. ¦ Aniq vazifa uchun eng yaxshisi bor. ¦ There's a best one for each job." },
+        { text: "HTML и CSS — хороший первый шаг ¦ HTML va CSS — yaxshi birinchi qadam ¦ HTML and CSS are a good first step", truth: true, explain: "Результат сразу видно на экране. ¦ Natija darhol ekranda ko'rinadi. ¦ You see results on screen at once." },
+      ],
+      notes: { min: 3 },
+    },
+    {
+      type: 'mission',
+      stage: 4,
+      title: "Миссия: подбери инструмент ¦ Missiya: asbobni tanla ¦ Mission: pick the tool",
+      chat: "номера ответов в чат ¦ javob raqamlarini chatga ¦ answer numbers in the chat",
+      goal: "Вы знаете, какой язык для чего! ¦ Qaysi til nima uchunligini bilasiz! ¦ You know which language does what!",
+      items: [
+        { title: "Хочу сделать сайт-портфолио ¦ Portfolio sayt yasamoqchiman ¦ I want a portfolio site", choices: ['HTML + CSS + JS', 'Swift'], correct: 0, explain: "Сайты — это HTML, CSS и JS. ¦ Saytlar — bu HTML, CSS va JS. ¦ Sites are HTML, CSS and JS." },
+        { title: "Хочу своего чат-бота с ИИ ¦ O'zimning sun'iy intellektli chat-botimni xohlayman ¦ I want my own AI chatbot", choices: ['Python', 'CSS'], correct: 0, explain: "Python — главный язык нейросетей. ¦ Python — neyrotarmoqlarning asosiy tili. ¦ Python is the main AI language." },
+        { title: "Что делает переводчик? ¦ Tarjimon nima qiladi? ¦ What does the translator do?", choices: ["Превращает код в 0 и 1 ¦ Kodni 0 va 1 ga aylantiradi ¦ Turns code into 0s and 1s", "Рисует картинки ¦ Rasm chizadi ¦ Draws pictures"], correct: 0, explain: "Компьютер понимает только 0 и 1. ¦ Kompyuter faqat 0 va 1 ni tushunadi. ¦ Computers only understand 0s and 1s." },
+      ],
+      notes: { min: 3 },
+    },
+    {
+      type: 'finale',
+      stage: 4,
+      title: "Итог: языки программирования ¦ Xulosa: dasturlash tillari ¦ Summary: programming languages",
+      chat: "какой язык выучите следующим? ¦ keyingi qaysi tilni o'rganasiz? ¦ which language will you learn next?",
+      answer: "Языков сотни, потому что задачи разные — как инструменты в ящике. Сайты делают на HTML, CSS и JavaScript, приложения для телефона — на Swift и Kotlin, нейросети — на Python, игры — на C# и C++. Языки похожи друг на друга, а программа-переводчик превращает любой код в нули и единицы, которые понимает компьютер. ¦ Tillar yuzlab, chunki vazifalar har xil — qutidagi asboblar kabi. Saytlar HTML, CSS va JavaScript'da, telefon ilovalari — Swift va Kotlin'da, neyrotarmoqlar — Python'da, o'yinlar — C# va C++'da yasaladi. Tillar bir-biriga o'xshaydi, tarjimon dastur esa har qanday kodni kompyuter tushunadigan nol va birlarga aylantiradi. ¦ There are hundreds of languages because jobs differ, like tools in a box. Websites use HTML, CSS and JavaScript; phone apps Swift and Kotlin; AI Python; games C# and C++. Languages resemble each other, and a translator program turns any code into the zeros and ones a computer understands.",
+      icon: '🧰',
+      badge: "Знаток языков ¦ Tillar bilimdoni ¦ Language expert",
+      badgeSub: "CSS · общая 6 ¦ CSS · umumiy 6 ¦ CSS · general 6",
+      homeworkTitle: "Дома ¦ Uyda ¦ At home",
+      homework: [
+        "Узнайте, на каком языке написана ваша любимая игра. ¦ Sevimli o'yiningiz qaysi tilda yozilganini bilib oling. ¦ Find out what language your favourite game uses.",
+        "Напишите «Hello!» на JavaScript в консоли браузера (F12). ¦ Brauzer konsolida (F12) JavaScript'da «Hello!» yozing. ¦ Write “Hello!” in JavaScript in the browser console (F12).",
+      ],
+      takeaway: "Дальше: как нейросеть рисует картинку по словам. ¦ Keyingisi: neyrotarmoq so'zlar bo'yicha qanday rasm chizadi. ¦ Next: how AI draws a picture from words.",
+      notes: { min: 2 },
+    },
+  ],
+});

@@ -1,0 +1,141 @@
+import { kit } from '@engine/kit';
+
+const IMG_CSS = `.frame{width:360px;height:260px;margin:30px auto;border-radius:20px;display:grid;place-items:center;font-size:120px;background:#f4f5f8;border:3px dashed #cfd3dc}
+.frame.ok{background:#fff3e0;border:3px solid #f2573a}
+.frame small{display:block;font-size:22px;color:#c2410c;font-weight:800;text-align:center}`;
+
+export default kit({
+  id: 'html-t02',
+  title: "Пути к файлам ¦ Fayl yo'llari ¦ File paths",
+  question: "Почему картинка не появляется на странице — и как указать к ней дорогу? ¦ Nega rasm sahifada ko'rinmaydi — va unga yo'lni qanday ko'rsatish kerak? ¦ Why won't an image show up — and how do you give the right directions?",
+  route: ["Папки ¦ Papkalar ¦ Folders", "Дорога к файлу ¦ Faylga yo'l ¦ Directions", "Наверх ¦ Yuqoriga ¦ Going up", "Ошибки ¦ Xatolar ¦ Mistakes", "Финал ¦ Yakun ¦ Finale"],
+  scenes: [
+    {
+      type: 'intro',
+      stage: 0,
+      icon: '🗺️',
+      kicker: "HTML · техническая тема 2 ¦ HTML · texnik mavzu 2 ¦ HTML · technical topic 2",
+      title: "Путь — это адрес файла ¦ Yo'l — fayl manzili ¦ A path is a file's address",
+      chat: "у вас бывало, что картинка не загрузилась? ¦ sizda rasm yuklanmagan holatlar bo'lganmi? ¦ ever had an image refuse to load?",
+      lead: "Браузер не видит ваши папки. Ему нужно объяснить дорогу: «зайди в папку images и возьми cat.png». ¦ Brauzer papkalaringizni ko'rmaydi. Unga yo'lni tushuntirish kerak: «images papkasiga kir va cat.png'ni ol». ¦ The browser can't see your folders. You must give directions: “go into images and take cat.png”.",
+      facts: ["Путь = дорога к файлу ¦ Yo'l = faylga yo'l ¦ Path = directions to a file", "/ — вход в папку ¦ / — papkaga kirish ¦ / — go into a folder", "../ — шаг наверх ¦ ../ — yuqoriga qadam ¦ ../ — step up"],
+      takeaway: "Сегодня научимся показывать браузеру дорогу. ¦ Bugun brauzerga yo'lni ko'rsatishni o'rganamiz. ¦ Today we learn to give the browser directions.",
+      notes: { min: 3 },
+    },
+    {
+      type: 'animate',
+      stage: 1,
+      title: "Как выглядит проект ¦ Loyiha qanday ko'rinadi ¦ What a project looks like",
+      chat: "где лежит картинка кота? ¦ mushuk rasmi qayerda yotibdi? ¦ where is the cat picture?",
+      actors: [
+        { id: 'site', icon: '📁', label: 'my-site' },
+        { id: 'index', icon: '📄', label: 'index.html' },
+        { id: 'images', icon: '📁', label: 'images' },
+        { id: 'cat', icon: '🐱', label: 'cat.png' },
+        { id: 'dog', icon: '🐶', label: 'dog.png' },
+      ],
+      steps: [
+        { say: "Главная папка сайта. ¦ Saytning asosiy papkasi. ¦ The site's main folder.", at: { site: [50, 15] } },
+        { say: "В ней — страница index.html и папка images. ¦ Unda — index.html sahifasi va images papkasi. ¦ Inside: the index.html page and an images folder.", at: { index: [28, 50], images: [72, 50] }, lines: [['site', 'index'], ['site', 'images']] },
+        { say: "А в images лежат картинки. ¦ images ichida esa rasmlar yotibdi. ¦ And the pictures live in images.", at: { cat: [62, 85], dog: [84, 85] }, lines: [['site', 'index'], ['site', 'images'], ['images', 'cat'], ['images', 'dog']] },
+        { say: "Путь от страницы до кота: images/cat.png ¦ Sahifadan mushukkacha yo'l: images/cat.png ¦ The path from the page to the cat: images/cat.png", lines: [['site', 'index'], ['site', 'images'], ['images', 'cat'], ['index', 'images', 'images/']], pulse: ['cat'] },
+      ],
+      takeaway: "Путь читаем как дорогу: «в images → взять cat.png». ¦ Yo'lni marshrut kabi o'qiymiz: «images'ga → cat.png'ni olish». ¦ Read a path like directions: “into images → take cat.png”.",
+      notes: { say: ["Покажите такую же структуру в VS Code."], switch: "VS Code ¦ VS Code ¦ VS Code", min: 4 },
+    },
+    {
+      type: 'show',
+      stage: 1,
+      title: "Неправильный и правильный путь ¦ Noto'g'ri va to'g'ri yo'l ¦ Wrong and right paths",
+      chat: "почему в первый раз кот не появился? ¦ nega birinchi marta mushuk paydo bo'lmadi? ¦ why didn't the cat show up the first time?",
+      css: IMG_CSS,
+      steps: [
+        { code: '<img src="cat.png">', html: '<div class="frame">🖼️<small>cat.png?</small></div>', say: "Браузер ищет cat.png рядом со страницей — а его там нет. ¦ Brauzer cat.png'ni sahifa yonidan qidiradi — lekin u yerda yo'q. ¦ The browser looks for cat.png next to the page — it isn't there." },
+        { code: '<img src="images/cat.png">', html: '<div class="frame ok">🐱</div>', say: "Добавили папку в путь — кот нашёлся! ¦ Yo'lga papkani qo'shdik — mushuk topildi! ¦ Add the folder to the path — the cat appears!" },
+      ],
+      takeaway: "Картинка «не грузится» почти всегда из-за неправильного пути. ¦ Rasm «yuklanmasligi» deyarli doim noto'g'ri yo'l sababli. ¦ A “broken” image is almost always a wrong path.",
+      notes: { min: 3 },
+    },
+    {
+      type: 'animate',
+      stage: 2,
+      title: "../ — шаг наверх ¦ ../ — yuqoriga qadam ¦ ../ — a step up",
+      chat: "как из папки pages добраться до logo.png? ¦ pages papkasidan logo.png'gacha qanday yetib borish mumkin? ¦ how do you get from pages to logo.png?",
+      actors: [
+        { id: 'site', icon: '📁', label: 'my-site' },
+        { id: 'pages', icon: '📁', label: 'pages' },
+        { id: 'about', icon: '📄', label: 'about.html' },
+        { id: 'logo', icon: '⭐', label: 'logo.png' },
+        { id: 'me', icon: '🚶' },
+      ],
+      steps: [
+        { say: "Страница about.html лежит в папке pages. ¦ about.html sahifasi pages papkasida yotibdi. ¦ about.html lives in the pages folder.", at: { site: [50, 15], pages: [28, 50], about: [28, 85], logo: [72, 50], me: [36, 85, 0.6] }, lines: [['site', 'pages'], ['site', 'logo'], ['pages', 'about']] },
+        { say: "Логотип — не здесь, а уровнем выше. ¦ Logotip — bu yerda emas, bir daraja yuqorida. ¦ The logo isn't here — it's one level up.", pulse: ['logo'], lines: [['site', 'pages'], ['site', 'logo'], ['pages', 'about']] },
+        { say: "../ — выходим из pages наверх… ¦ ../ — pages'dan yuqoriga chiqamiz… ¦ ../ — step up out of pages…", at: { me: [50, 24, 0.6] }, lines: [['site', 'pages'], ['site', 'logo'], ['pages', 'about']] },
+        { say: "…и берём logo.png. Путь: ../logo.png ¦ …va logo.png'ni olamiz. Yo'l: ../logo.png ¦ …and take logo.png. Path: ../logo.png", at: { me: [72, 60, 0.6] }, pulse: ['logo'], lines: [['site', 'pages'], ['site', 'logo'], ['pages', 'about']] },
+      ],
+      takeaway: "../ = «выйти из папки на шаг вверх». ¦ ../ = «papkadan bir qadam yuqoriga chiqish». ¦ ../ = “go up one folder”.",
+      notes: { min: 4 },
+    },
+    {
+      type: 'bugs',
+      stage: 3,
+      title: "Почему не грузится? ¦ Nega yuklanmayapti? ¦ Why won't it load?",
+      chat: "номер строки с ошибкой ¦ xatoli qator raqami ¦ the line number with the bug",
+      snippets: [
+        { title: "Большая буква ¦ Katta harf ¦ A capital letter", lang: 'html', code: `<!-- the file is images/cat.png -->\n<img src="images/Cat.png">`, line: 2, explain: "Cat.png и cat.png — разные имена. На сервере важна каждая буква. ¦ Cat.png va cat.png — turli nomlar. Serverda har bir harf muhim. ¦ Cat.png and cat.png are different names. On a server every letter counts.", fix: `<img src="images/cat.png">` },
+        { title: "Путь с компьютера ¦ Kompyuterdagi yo'l ¦ A path from your computer", lang: 'html', code: `<img src="C:/Users/Ali/Desktop/cat.png">`, line: 1, explain: "Такой путь работает только на вашем компьютере. В интернете его никто не найдёт. ¦ Bunday yo'l faqat kompyuteringizda ishlaydi. Internetda uni hech kim topa olmaydi. ¦ That path only works on your own computer. Nobody online can reach it.", fix: `<img src="images/cat.png">` },
+      ],
+      takeaway: "Пишем пути от страницы, маленькими буквами и без пробелов. ¦ Yo'llarni sahifadan, kichik harflar bilan va bo'sh joysiz yozamiz. ¦ Write paths from the page, in lowercase, with no spaces.",
+      notes: { say: ["Найдите вместе с чатом."], min: 5 },
+    },
+    {
+      type: 'sort',
+      stage: 3,
+      title: "Сработает или нет? ¦ Ishlaydimi yoki yo'qmi? ¦ Will it work?",
+      chat: "пишите: «1 — да» ¦ yozing: «1 — ha» ¦ write: “1 — yes”",
+      zones: [
+        { id: 'ok', label: "Сработает ¦ Ishlaydi ¦ Works", icon: '✅' },
+        { id: 'bad', label: "Не сработает ¦ Ishlamaydi ¦ Fails", icon: '❌' },
+      ],
+      items: [
+        { text: 'images/cat.png', zone: 'ok' },
+        { text: 'images/my cat.png', zone: 'bad', why: "Пробел в имени — частая причина ошибок. ¦ Nomdagi bo'sh joy — xatolarning keng tarqalgan sababi. ¦ Spaces in names often break paths." },
+        { text: 'C:/Desktop/cat.png', zone: 'bad' },
+        { text: '../logo.png', zone: 'ok' },
+      ],
+      takeaway: "Короткие имена латиницей без пробелов — и путь всегда работает. ¦ Bo'sh joysiz lotin harflaridagi qisqa nomlar — va yo'l doim ishlaydi. ¦ Short lowercase names with no spaces always work.",
+      notes: { say: ["Раскладка → «Проверить»."], min: 3 },
+    },
+    {
+      type: 'mission',
+      stage: 4,
+      title: "Миссия: проводник ¦ Missiya: yo'lboshchi ¦ Mission: the guide",
+      chat: "номера ответов в чат ¦ javob raqamlarini chatga ¦ answer numbers in the chat",
+      goal: "Все картинки на месте! ¦ Barcha rasmlar joyida! ¦ Every image loads!",
+      items: [
+        { title: "Картинка в папке img рядом со страницей ¦ Sahifa yonidagi img papkasidagi rasm ¦ A picture in an img folder next to the page", choices: ['img/photo.png', 'photo.png'], correct: 0, explain: "Сначала папка, потом файл. ¦ Avval papka, keyin fayl. ¦ Folder first, then file." },
+        { title: "Шаг наверх ¦ Yuqoriga qadam ¦ One step up", choices: ['../', './up/'], correct: 0, explain: "Две точки и слеш. ¦ Ikkita nuqta va slesh. ¦ Two dots and a slash." },
+        { title: "Лучшее имя файла ¦ Eng yaxshi fayl nomi ¦ The best file name", choices: ['my-cat.png', "Мой Кот.png ¦ Mening Mushugim.png ¦ My Cat.png"], correct: 0, explain: "Латиница, маленькие буквы, без пробелов. ¦ Lotin, kichik harflar, bo'sh joysiz. ¦ Latin, lowercase, no spaces." },
+      ],
+      notes: { say: ["Ответы чата → «Проверить»."], min: 3 },
+    },
+    {
+      type: 'finale',
+      stage: 4,
+      title: "Итог: пути к файлам ¦ Xulosa: fayl yo'llari ¦ Summary: file paths",
+      chat: "какая ошибка с путями у вас была? ¦ sizda yo'llar bilan qanday xato bo'lgan? ¦ what path mistake have you made?",
+      answer: "Путь — это дорога от страницы к файлу. images/cat.png значит «зайди в images и возьми cat.png», а ../ — «выйди на шаг вверх». Картинка не грузится, если ошиблись в папке, букве или оставили путь с вашего компьютера. Называйте файлы латиницей, маленькими буквами и без пробелов. ¦ Yo'l — sahifadan faylgacha bo'lgan yo'l. images/cat.png degani «images'ga kir va cat.png'ni ol», ../ esa — «bir qadam yuqoriga chiq». Papkada, harfda xato qilsangiz yoki kompyuteringizdagi yo'lni qoldirsangiz, rasm yuklanmaydi. Fayllarni lotin harflarida, kichik harflar bilan va bo'sh joysiz nomlang. ¦ A path is the route from the page to a file. images/cat.png means “go into images and take cat.png”, and ../ means “step up one folder”. Images break when the folder or a letter is wrong, or the path points at your own computer. Name files in Latin, lowercase, no spaces.",
+      icon: '🗺️',
+      badge: "Проводник по папкам ¦ Papkalar yo'lboshchisi ¦ Folder guide",
+      badgeSub: "HTML · техническая 2 ¦ HTML · texnik 2 ¦ HTML · technical 2",
+      homeworkTitle: "Дома ¦ Uyda ¦ At home",
+      homework: [
+        "Сделайте папку images и вставьте на страницу 3 картинки из неё. ¦ images papkasini yarating va sahifaga undan 3 ta rasm qo'ying. ¦ Make an images folder and show 3 pictures from it.",
+        "Создайте папку pages и подключите из неё логотип через ../ ¦ pages papkasini yarating va undan logotipni ../ orqali ulang. ¦ Create a pages folder and link the logo from it with ../",
+      ],
+      takeaway: "Дальше: Emmet — пишем HTML в 10 раз быстрее. ¦ Keyingisi: Emmet — HTML'ni 10 barobar tez yozamiz. ¦ Next: Emmet — writing HTML 10× faster.",
+      notes: { say: ["Итог."], min: 2 },
+    },
+  ],
+});
