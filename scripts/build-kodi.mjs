@@ -79,8 +79,8 @@ writeFileSync(
 </html>
 `,
 );
-// Artifact variant: the host adds doctype/head/body itself
-writeFileSync(
+// Artifact variant (only with --out): the host adds doctype/head/body itself
+if (outArg) writeFileSync(
   path.join(OUT, 'artifact.html'),
   `<title>Kodi Lab</title>
 <meta name="theme-color" content="#FA4F28">
