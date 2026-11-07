@@ -4,7 +4,7 @@ export type Locale = 'uz' | 'ru' | 'en';
 export const LOCALES: Locale[] = ['uz', 'ru', 'en'];
 export const DEFAULT_LOCALE: Locale = 'uz';
 
-export type ModuleId = 'html' | 'css' | 'bootstrap' | 'tilda-git' | 'js' | 'react';
+export type ModuleId = 'kids' | 'html' | 'css' | 'bootstrap' | 'tilda-git' | 'js' | 'react';
 export type LessonKind = 'general' | 'technical';
 export type L10n<T = string> = Record<Locale, T>;
 

@@ -7,7 +7,7 @@ import { LESSONS, MODULES, lessonsOf } from '@/lessons/registry';
 import { Header } from './Header';
 import { LessonCard } from './LessonCard';
 
-const MODULE_GLYPH: Record<string, string> = { html: '</>', css: '{ }', bootstrap: 'B', 'tilda-git': '⎇', js: 'JS', react: '⚛' };
+const MODULE_GLYPH: Record<string, string> = { kids: '8+', html: '</>', css: '{ }', bootstrap: 'B', 'tilda-git': '⎇', js: 'JS', react: '⚛' };
 
 export function Home() {
   const ui = useUi();

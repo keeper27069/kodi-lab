@@ -1,0 +1,97 @@
+import { kit } from '@engine/kit';
+import { HOME, ROUTE, kick } from './_kids';
+
+export default kit({
+  id: 'kids-t06',
+  title: "Кто пишет: друг, незнакомец или робот? ¦ Kim yozyapti: do'stmi, notanishmi yoki robotmi? ¦ Who is writing: a friend, a stranger or a robot?",
+  question: "Можно ли узнать, кто за экраном, по одному сообщению? ¦ Bitta xabardan ekran ortida kim borligini bilsa bo'ladimi? ¦ Can you tell who's behind the screen from one message?",
+  route: ROUTE,
+  scenes: [
+    {
+      type: 'intro',
+      stage: 0,
+      icon: '💬',
+      kicker: kick('cyber', 't', 2),
+      title: "Кто там, за экраном? ¦ Ekran ortida kim bor? ¦ Who's behind the screen?",
+      chat: "кому ты пишешь чаще всего? одно слово: «мама», «друг»… ¦ kimga ko'proq yozasan? bitta so'z: «onam», «do'stim»… ¦ who do you message most? one word: “mum”, “friend”…",
+      lead: "В интернете не видно лица. Тот, кто называет себя «Аня, 9 лет», может быть кем угодно — даже взрослым или программой. Поэтому у нас есть правило из трёх шагов. ¦ Internetda yuz ko'rinmaydi. O'zini «Anya, 9 yosh» deb ataganlar har kim bo'lishi mumkin — hatto katta odam yoki dastur. Shuning uchun bizda uch qadamli qoida bor. ¦ Online you can't see a face. Someone calling themselves “Anya, 9” could be anyone — even an adult or a program. That's why we have a three-step rule.",
+      facts: [
+        "Повторяем уроки 11–13 ¦ 11–13-darslarni takrorlaymiz ¦ We revise lessons 11–13",
+        "Переписка выдуманная ¦ Yozishma to'qima ¦ The chat is made up",
+      ],
+      notes: { min: 3 },
+    },
+    {
+      type: 'poll',
+      stage: 1,
+      title: "Пришло: «Привет! Я Аня, мне 9 лет». Кто это? ¦ Keldi: «Salom! Men Anya, 9 yoshdaman». Bu kim? ¦ A message: “Hi! I'm Anya, I'm 9.” Who is it?",
+      chat: "пиши номер ¦ raqamini yoz ¦ write the number",
+      options: [
+        { label: "1 · Точно девочка Аня ¦ 1 · Aniq Anya ismli qiz ¦ 1 · Definitely a girl called Anya" },
+        { label: "2 · Точно робот ¦ 2 · Aniq robot ¦ 2 · Definitely a robot" },
+        { label: "3 · Нельзя знать наверняка ¦ 3 · Aniq bilib bo'lmaydi ¦ 3 · You can't know for sure" },
+      ],
+      correct: 2,
+      result: "Верно: по одному сообщению это не узнать. Поэтому со знакомыми только в интернете — особая осторожность. ¦ To'g'ri: bitta xabardan buni bilib bo'lmaydi. Shuning uchun faqat internetdagi tanishlar bilan — alohida ehtiyotkorlik. ¦ Right: one message can't tell you. So be extra careful with people you only know online.",
+      notes: { min: 5 },
+    },
+    {
+      type: 'dialog',
+      stage: 2,
+      title: "Найди тревожные сигналы ¦ Xavotirli belgilarni top ¦ Spot the warning signs",
+      chat: "номер тревожного сообщения ¦ xavotirli xabar raqami ¦ the number of the worrying message",
+      a: { name: "Незнакомец ¦ Notanish ¦ Stranger", icon: '👤' },
+      b: { name: "Тимур ¦ Temur ¦ Timur", icon: '🧒' },
+      messages: [
+        { from: 'a', text: "Привет! Классные у тебя рисунки 😊 ¦ Salom! Rasmlaring zo'r ekan 😊 ¦ Hi! Your drawings are great 😊" },
+        { from: 'b', text: "Спасибо! ¦ Rahmat! ¦ Thanks!" },
+        { from: 'a', text: "Только никому не говори про нашу дружбу, ладно? ¦ Faqat do'stligimiz haqida hech kimga aytma, xo'pmi? ¦ Don't tell anyone about our friendship, OK?", flag: "Просит секрет ¦ Sir so'rayapti ¦ Asks for a secret" },
+        { from: 'a', text: "Пришли своё фото 📸 ¦ Suratingni yubor 📸 ¦ Send me your photo 📸", flag: "Просит фото ¦ Surat so'rayapti ¦ Asks for a photo" },
+        { from: 'a', text: "Давай встретимся у школы? ¦ Maktab yonida uchrashamizmi? ¦ Let's meet near your school?", flag: "Зовёт на встречу ¦ Uchrashuvga chaqiryapti ¦ Wants to meet" },
+        { from: 'b', text: "Я покажу это маме. Пока! ¦ Buni onamga ko'rsataman. Xayr! ¦ I'll show this to my mum. Bye!", good: "Правильное решение ¦ To'g'ri qaror ¦ The right choice" },
+      ],
+      notes: { say: ['Подчёркиваем: Тимур не виноват, что ему написали. Он молодец, что рассказал взрослому.'], min: 8 },
+    },
+    {
+      type: 'flow',
+      stage: 2,
+      title: "Правило трёх шагов ¦ Uch qadam qoidasi ¦ The three-step rule",
+      chat: "какой шаг первый? номер ¦ birinchi qadam qaysi? raqam ¦ which step comes first? a number",
+      nodes: [
+        { icon: '✋', label: "1 · Стоп ¦ 1 · To'xta ¦ 1 · Stop", text: "Не отвечаю и ничего не отправляю ¦ Javob bermayman va hech narsa yubormayman ¦ Don't reply or send anything" },
+        { icon: '💾', label: "2 · Сохранить ¦ 2 · Saqlash ¦ 2 · Save", text: "Сохраняю сообщение вместе со взрослым ¦ Xabarni kattalar bilan birga saqlayman ¦ Save the message with a grown-up" },
+        { icon: '🧑‍🧒', label: "3 · Показать ¦ 3 · Ko'rsatish ¦ 3 · Show", text: "Показываю взрослому, которому доверяю ¦ Ishonchli kattaga ko'rsataman ¦ Show a grown-up you trust" },
+      ],
+      takeaway: "Если просят секрет, фото или встречу — прекращаем общение. ¦ Sir, surat yoki uchrashuv so'rashsa — muloqotni to'xtatamiz. ¦ If they ask for a secret, a photo or a meeting — stop chatting.",
+      notes: { min: 5 },
+    },
+    {
+      type: 'mission',
+      stage: 3,
+      title: "Сделай сам: выбери безопасное действие ¦ O'zing bajar: xavfsiz harakatni tanla ¦ Your turn: pick the safe move",
+      chat: "номер ответа в чат ¦ javob raqamini chatga ¦ answer number in the chat",
+      goal: "Ты знаешь, как поступить! ¦ Qanday yo'l tutishni bilasan! ¦ You know what to do!",
+      items: [
+        { title: "Просят пароль от игры ¦ O'yin parolini so'rashyapti ¦ Someone asks for your game password", choices: ["Не даю и говорю взрослому ¦ Bermayman va kattaga aytaman ¦ Don't give it and tell a grown-up", "Даю, если обещают подарок ¦ Sovg'a va'da qilishsa, beraman ¦ Give it if they promise a gift"], correct: 0, explain: "Пароль — только твой. ¦ Parol — faqat seniki. ¦ A password is yours alone." },
+        { title: "Друг из класса пишет с нового номера странное ¦ Sinfdoshing yangi raqamdan g'alati narsa yozyapti ¦ A classmate writes something odd from a new number", choices: ["Спрошу его лично в школе ¦ Maktabda o'zidan so'rayman ¦ Ask them in person at school", "Сразу верю ¦ Darhol ishonaman ¦ Believe it right away"], correct: 0, explain: "Проверяем другим способом. ¦ Boshqa yo'l bilan tekshiramiz. ¦ Check another way." },
+      ],
+      notes: { min: 6 },
+    },
+    {
+      type: 'finale',
+      stage: 4,
+      title: "Итог: стоп — сохрани — покажи ¦ Xulosa: to'xta — saqla — ko'rsat ¦ Wrap-up: stop, save, show",
+      chat: "кому из взрослых ты расскажешь, если что? одно слово ¦ biror narsa bo'lsa, qaysi kattaga aytasan? bitta so'z ¦ which grown-up would you tell? one word",
+      answer: "По одному сообщению нельзя узнать, кто пишет: друг, незнакомец или программа. Если просят секрет, фото или встречу — прекращаем общение, сохраняем сообщение вместе со взрослым и показываем ему. Ты не виноват, если тебе написали плохое, — главное рассказать. ¦ Bitta xabardan kim yozayotganini bilib bo'lmaydi: do'stmi, notanishmi yoki dastur. Sir, surat yoki uchrashuv so'rashsa — muloqotni to'xtatamiz, xabarni kattalar bilan saqlaymiz va ularga ko'rsatamiz. Senga yomon narsa yozishsa, sen aybdor emassan — asosiysi aytib berish. ¦ One message can't tell you who's writing: a friend, a stranger or a program. If they ask for a secret, a photo or a meeting, stop, save the message with a grown-up and show them. It's not your fault if someone writes something bad — the important thing is to tell.",
+      icon: '🛡️',
+      badge: "Безопасный собеседник ¦ Xavfsiz suhbatdosh ¦ Safe chatter",
+      badgeSub: kick('cyber', 't', 2),
+      homeworkTitle: HOME,
+      homework: [
+        "Расскажи родным правило трёх шагов и договоритесь, кому ты всегда можешь сказать. ¦ Yaqinlaringga uch qadam qoidasini aytib ber va doim kimga aytishing mumkinligini kelishib ol. ¦ Tell your family the three-step rule and agree who you can always tell.",
+        "Нужны: бумага и карандаш. ¦ Kerak: qog'oz va qalam. ¦ You need: paper and a pencil.",
+      ],
+      notes: { min: 3 },
+    },
+  ],
+});

@@ -1,0 +1,91 @@
+import { kit } from '@engine/kit';
+import { HOME, ROUTE, kick } from './_kids';
+
+export default kit({
+  id: 'kids-t14',
+  title: "Решаем с конца ¦ Oxiridan yechamiz ¦ Solving from the end",
+  question: "Сколько яблок было у бабушки в самом начале? ¦ Buvining boshida nechta olmasi bor edi? ¦ How many apples did Grandma have at the start?",
+  route: ROUTE,
+  scenes: [
+    {
+      type: 'intro',
+      stage: 0,
+      icon: '🍎',
+      kicker: kick('logic', 't', 6),
+      title: "Бабушкины яблоки ¦ Buvining olmalari ¦ Grandma's apples",
+      chat: "сколько яблок ты съедаешь за день? число ¦ kuniga nechta olma yeysan? son ¦ how many apples do you eat a day? a number",
+      lead: "Бабушка раздала соседям половину яблок, потом отдала внукам ещё 2. У неё осталось 3 яблока. Сколько было сначала? Начинать с начала трудно — мы его не знаем. Зато знаем конец! ¦ Buvi qo'shnilarga olmalarining yarmini berdi, keyin nevaralariga yana 2 tasini berdi. Unda 3 ta olma qoldi. Boshida nechta bo'lgan? Boshidan boshlash qiyin — biz uni bilmaymiz. Lekin oxirini bilamiz! ¦ Grandma gave half her apples to the neighbours, then 2 more to her grandchildren. She has 3 left. How many did she start with? We don't know the start — but we know the end!",
+      facts: [
+        "Повторяем уроки 15–17 ¦ 15–17-darslarni takrorlaymiz ¦ We revise lessons 15–17",
+      ],
+      notes: { min: 3 },
+    },
+    {
+      type: 'predict',
+      stage: 1,
+      title: "Угадай: сколько яблок было сначала? ¦ Taxmin qil: boshida nechta olma bo'lgan? ¦ Guess: how many apples at the start?",
+      chat: "пиши число ¦ sonni yoz ¦ write a number",
+      label: "Яблок ¦ Olmalar ¦ Apples",
+      min: 0,
+      max: 20,
+      answer: 10,
+      result: "10! Сейчас пройдём путь назад и проверим. ¦ 10! Hozir orqaga yo'lni bosib o'tamiz va tekshiramiz. ¦ 10! Let's walk back and check.",
+      notes: { min: 4 },
+    },
+    {
+      type: 'flow',
+      stage: 2,
+      title: "Идём назад: каждое действие — наоборот ¦ Orqaga yuramiz: har bir harakat — teskari ¦ Going back: reverse every step",
+      chat: "что делаем вместо «отдала 2»? ¦ «2 tasini berdi» o'rniga nima qilamiz? ¦ what replaces “gave away 2”?",
+      nodes: [
+        { icon: '🏁', label: "Конец: 3 ¦ Oxiri: 3 ¦ End: 3", text: "Осталось 3 яблока ¦ 3 ta olma qoldi ¦ 3 apples left" },
+        { icon: '➕', label: "3 + 2 = 5 ¦ 3 + 2 = 5 ¦ 3 + 2 = 5", text: "«Отдала 2» → прибавляем 2 ¦ «2 tasini berdi» → 2 qo'shamiz ¦ “Gave 2” → add 2" },
+        { icon: '✖️', label: "5 × 2 = 10 ¦ 5 × 2 = 10 ¦ 5 × 2 = 10", text: "«Раздала половину» → удваиваем ¦ «Yarmini berdi» → ikki barobar qilamiz ¦ “Gave half” → double it" },
+        { icon: '🚩', label: "Начало: 10 ¦ Boshi: 10 ¦ Start: 10", text: "Было 10 яблок ¦ 10 ta olma bor edi ¦ There were 10 apples" },
+      ],
+      takeaway: "Проверка вперёд: 10 → половина 5 → минус 2 → 3. Сходится! ¦ Oldinga tekshiruv: 10 → yarmi 5 → minus 2 → 3. Mos keldi! ¦ Check forwards: 10 → half is 5 → minus 2 → 3. It works!",
+      notes: { min: 7 },
+    },
+    {
+      type: 'cards',
+      stage: 2,
+      title: "Пары «туда — обратно» ¦ «Borish — qaytish» juftliklari ¦ “There and back” pairs",
+      chat: "что обратно к «умножить на 3»? ¦ «3 ga ko'paytirish»ning teskarisi nima? ¦ what undoes “times 3”?",
+      cards: [
+        { icon: '➕', front: "Прибавить ¦ Qo'shish ¦ Add", back: "Обратно: вычесть ¦ Teskarisi: ayirish ¦ Undo: subtract" },
+        { icon: '✖️', front: "Умножить ¦ Ko'paytirish ¦ Multiply", back: "Обратно: разделить ¦ Teskarisi: bo'lish ¦ Undo: divide" },
+        { icon: '➡️', front: "Шаг вправо ¦ O'ngga qadam ¦ A step right", back: "Обратно: шаг влево ¦ Teskarisi: chapga qadam ¦ Undo: a step left" },
+        { icon: '🌀', front: "Лабиринт ¦ Labirint ¦ A maze", back: "Иди от выхода к входу ¦ Chiqishdan kirishga yur ¦ Walk from the exit to the entrance" },
+      ],
+      notes: { min: 4 },
+    },
+    {
+      type: 'mission',
+      stage: 3,
+      title: "Сделай сам: задуманное число ¦ O'zing bajar: o'ylangan son ¦ Your turn: the secret number",
+      chat: "пиши число и проверь прямым ходом ¦ sonni yoz va to'g'ri yo'l bilan tekshir ¦ write the number and check it forwards",
+      goal: "Ты умеешь решать с конца! ¦ Oxiridan yechishni bilasan! ¦ You can solve from the end!",
+      items: [
+        { title: "Число умножили на 2, прибавили 3 и получили 11. Какое число? ¦ Sonni 2 ga ko'paytirib, 3 qo'shishdi va 11 chiqdi. Qanday son? ¦ A number was doubled, then 3 added, giving 11. What was it?", choices: ['4', '7'], correct: 0, explain: "11 − 3 = 8, 8 : 2 = 4 ¦ 11 − 3 = 8, 8 : 2 = 4 ¦ 11 − 3 = 8, 8 ÷ 2 = 4" },
+        { title: "У Лолы было сколько-то конфет. Ей дали 5, и стало 12. Сколько было? ¦ Lolada qancha konfet bor edi. Unga 5 ta berishdi va 12 ta bo'ldi. Qancha bor edi? ¦ Lola had some sweets. She got 5 more and now has 12. How many before?", choices: ['7', '17'], correct: 0, explain: "12 − 5 = 7 ¦ 12 − 5 = 7 ¦ 12 − 5 = 7" },
+      ],
+      notes: { say: ['Если останется время — лабиринт на слайде проходим от выхода.'], min: 8 },
+    },
+    {
+      type: 'finale',
+      stage: 4,
+      title: "Итог: от цели к первому шагу ¦ Xulosa: maqsaddan birinchi qadamga ¦ Wrap-up: from the goal to the first step",
+      chat: "какую задачу ты решишь с конца дома? ¦ uyda qaysi masalani oxiridan yechasan? ¦ what problem will you solve backwards at home?",
+      answer: "Если знаем конец, а начало — нет, идём назад и меняем каждое действие на обратное: «отдала 2» — прибавляем 2, «раздала половину» — удваиваем. Так из 3 яблок получилось 10. А потом обязательно проверяем прямым ходом. ¦ Oxirini bilsak-u, boshini bilmasak, orqaga yuramiz va har bir harakatni teskarisiga almashtiramiz: «2 tasini berdi» — 2 qo'shamiz, «yarmini berdi» — ikki barobar qilamiz. Shunday qilib 3 ta olmadan 10 ta chiqdi. Keyin albatta to'g'ri yo'l bilan tekshiramiz. ¦ When you know the end but not the start, walk back and reverse each step: “gave 2” means add 2, “gave half” means double. That's how 3 apples became 10. Then always check forwards.",
+      icon: '🔄',
+      badge: "Мастер обратного хода ¦ Teskari yurish ustasi ¦ Reverse master",
+      badgeSub: kick('logic', 't', 6),
+      homeworkTitle: HOME,
+      homework: [
+        "Загадай родным число: «умножь на 2, прибавь 1 — получилось 9». Пусть найдут его с конца. ¦ Yaqinlaringga son o'yla: «2 ga ko'paytir, 1 qo'sh — 9 chiqdi». Oxiridan topishsin. ¦ Give your family a number puzzle: “double it, add 1 — you get 9.” Let them solve it backwards.",
+        "Нужны: бумага и карандаш. ¦ Kerak: qog'oz va qalam. ¦ You need: paper and a pencil.",
+      ],
+      notes: { min: 4 },
+    },
+  ],
+});

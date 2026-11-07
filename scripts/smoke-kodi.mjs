@@ -45,7 +45,7 @@ const lessons = ready
   // target: 'all', one id, or a comma list of ids / prefixes (e.g. 'react,js-t')
   .filter((id) => target === 'all' || target.split(',').some((t) => id === t || id.startsWith(t)))
   .map((id) => {
-    const m = new RegExp(`\\['${id}',\\s*'([^']+)'`).exec(topics);
+    const m = new RegExp(`\\[['"]${id}['"],\\s*['"]([^'"]+)['"]`).exec(topics);
     return { id, module: id.replace(/-[gt]\d+$/, ''), slug: m?.[1] };
   })
   .filter((l) => !(changed instanceof Set) || [...changed].some((f) => f.startsWith(`src/lessons/${l.module}/${l.slug}`)));

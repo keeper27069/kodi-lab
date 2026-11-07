@@ -5,6 +5,7 @@ export interface UiStrings {
   search: string;
   searchEmpty: string;
   readyOf: (ready: number, total: number) => string;
+  kids: { age: string; generalHint: string; technicalHint: string; reserve: string; reserveHint: string };
   general: string;
   generalHint: string;
   technical: string;
@@ -15,7 +16,7 @@ export interface UiStrings {
   minutes: (n: number) => string;
   backToCatalog: string;
   open: string;
-  modules: Record<'html' | 'css' | 'bootstrap' | 'tilda-git' | 'js' | 'react', string>;
+  modules: Record<'kids' | 'html' | 'css' | 'bootstrap' | 'tilda-git' | 'js' | 'react', string>;
   // Player
   chatPrefix: string;
   next: string;

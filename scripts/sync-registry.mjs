@@ -24,7 +24,7 @@ for (const mod of readdirSync(root)) {
     lines.push([id, `  '${id}': { load: () => import('./${mod}/${f.replace(/\.ts$/, '')}'), minutes: ${minutes} },`]);
   }
 }
-const order = ['html', 'css', 'bootstrap', 'tilda-git', 'js', 'react'];
+const order = ['kids', 'html', 'css', 'bootstrap', 'tilda-git', 'js', 'react'];
 const rank = (id) => {
   const m = /^(.*)-([gt])(\d+)$/.exec(id);
   return order.indexOf(m[1]) * 1000 + (m[2] === 't' ? 500 : 0) + Number(m[3]);
