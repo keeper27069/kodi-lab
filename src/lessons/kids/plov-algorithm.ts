@@ -50,6 +50,22 @@ export default kit({
       notes: { say: ['В эфире работаем только с карточками. К плите дети не подходят.'], min: 3 },
     },
     {
+      type: 'order',
+      stage: 1,
+      title: "Сначала — порядок: расставь шаги плова ¦ Avval — tartib: palov qadamlarini joylashtir ¦ Order first: put the plov steps in place",
+      chat: "пиши номера шагов по порядку: «2 5 1…» ¦ qadam raqamlarini tartib bilan yoz: «2 5 1…» ¦ write the step numbers in order: “2 5 1…”",
+      items: [
+        "🔪 Нарезать мясо, лук и морковь ¦ 🔪 Go'sht, piyoz va sabzini to'g'rash ¦ 🔪 Chop the meat, onions and carrots",
+        "🔥 Нагреть масло в казане ¦ 🔥 Qozonda yog'ni qizdirish ¦ 🔥 Heat the oil in the kazan",
+        "🥩 Обжарить мясо ¦ 🥩 Go'shtni qovurish ¦ 🥩 Fry the meat",
+        "🥕 Добавить лук и морковь ¦ 🥕 Piyoz va sabzini qo'shish ¦ 🥕 Add the onions and carrots",
+        "💧 Налить воду и посолить ¦ 💧 Suv quyib, tuz solish ¦ 💧 Pour in water and add salt",
+        "🍚 Положить рис и варить до готовности ¦ 🍚 Guruchni solib, pishguncha damlash ¦ 🍚 Add the rice and cook until done",
+      ],
+      takeaway: "Нельзя обжарить мясо, пока казан холодный, — у каждого шага своё место. ¦ Qozon sovuq bo'lsa, go'shtni qovurib bo'lmaydi — har bir qadamning o'z o'rni bor. ¦ You can't fry the meat in a cold kazan — every step has its place.",
+      notes: { say: ['Дети перетаскивают шаги или пишут номера в чат, ментор собирает порядок на экране. Готовят плов только взрослые.'], min: 4 },
+    },
+    {
       type: 'show',
       stage: 1,
       title: "Шаг за шагом: 105 минут ¦ Qadamma-qadam: 105 daqiqa ¦ One step at a time: 105 minutes",
@@ -59,7 +75,7 @@ export default kit({
       steps: [
         { code: '30 + 20 + 25 + 30', html: chart(false), say: "Если делать всё по очереди: 30 + 20 + 25 + 30 = 105 минут. Долго! ¦ Hammasini navbat bilan qilsak: 30 + 20 + 25 + 30 = 105 daqiqa. Uzoq! ¦ Doing everything in turn: 30 + 20 + 25 + 30 = 105 minutes. That's long!" },
       ],
-      notes: { min: 5 },
+      notes: { min: 4 },
     },
     {
       type: 'show',
@@ -72,7 +88,7 @@ export default kit({
         { code: 'parallel', html: chart(true), say: "Рис замачивается сам — в это время режем и начинаем жарить. Готово за 75 минут! ¦ Guruch o'zi ivib turadi — shu vaqtda to'g'raymiz va qovurishni boshlaymiz. 75 daqiqada tayyor! ¦ The rice soaks on its own — meanwhile we chop and start frying. Done in 75 minutes!" },
       ],
       takeaway: "105 − 75 = 30 минут экономии. Но рис варим только после обжарки — порядок важен! ¦ 105 − 75 = 30 daqiqa tejaldi. Lekin guruchni faqat qovurishdan keyin pishiramiz — tartib muhim! ¦ 105 − 75 = 30 minutes saved. But the rice still goes in after frying — order matters!",
-      notes: { min: 7 },
+      notes: { min: 5 },
     },
     {
       type: 'sort',
@@ -100,7 +116,7 @@ export default kit({
       items: [
         { title: "Тесто поднимается 40 минут, начинку готовить 20. По очереди — 60 минут. А одновременно? ¦ Xamir 40 daqiqa ko'tariladi, ichini tayyorlash 20 daqiqa. Navbat bilan — 60 daqiqa. Bir vaqtda-chi? ¦ Dough rises for 40 minutes, the filling takes 20. In turn: 60. At the same time?", choices: ["40 минут ¦ 40 daqiqa ¦ 40 minutes", "60 минут ¦ 60 daqiqa ¦ 60 minutes"], correct: 0, explain: "Пока тесто поднимается, готовим начинку: экономия 20 минут. ¦ Xamir ko'tarilayotganda ichini tayyorlaymiz: 20 daqiqa tejaladi. ¦ Make the filling while the dough rises: 20 minutes saved." },
       ],
-      notes: { min: 6 },
+      notes: { min: 5 },
     },
     {
       type: 'finale',

@@ -65,7 +65,7 @@ export default kit({
         { id: 'n', label: "Не заметит ¦ Sezmaydi ¦ It doesn't", icon: '❌' },
       ],
       items: [
-        { text: "Голый палец ¦ Yalang'och barmoq ¦ A bare finger", zone: 'y' },
+        { text: "Обычный палец без перчатки ¦ Qo'lqopsiz oddiy barmoq ¦ A plain finger, no glove", zone: 'y' },
         { text: "Палец в шерстяной перчатке ¦ Jun qo'lqopdagi barmoq ¦ A finger in a woolly glove", zone: 'n' },
         { text: "Сенсорная перчатка ¦ Sensorli qo'lqop ¦ A touch glove", zone: 'y' },
         { text: "Карандаш с ластиком ¦ O'chirg'ichli qalam ¦ A pencil eraser", zone: 'n' },

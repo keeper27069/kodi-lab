@@ -5,6 +5,7 @@ import { useNumberKeys, useSceneState } from '../scene/hooks';
 export interface PollOption {
   label: ReactNode;
   detail?: ReactNode;
+  art?: ReactNode;
 }
 
 interface Props {
@@ -45,6 +46,7 @@ export function PollReveal({ options, correct, result, onPick, name = 'poll', co
               animate={state === 'is-wrong' ? { x: [0, -10, 10, -6, 6, 0] } : state === 'is-correct' ? { scale: [1, 1.05, 1] } : {}}
               transition={{ duration: 0.45 }}
             >
+              {o.art}
               <span className="poll__num">{i + 1}</span>
               <span className="poll__label">{o.label}</span>
               {o.detail && picked != null && <span className="poll__detail">{o.detail}</span>}

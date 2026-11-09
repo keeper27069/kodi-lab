@@ -73,7 +73,6 @@ export default kit({
       seeds: ["черепаха сколько живёт ¦ toshbaqa necha yil yashaydi ¦ tortoise how long live"],
       hits: ['черепах', 'toshbaqa', 'tortoise', 'turtle'],
       hitBadge: "есть главное слово ¦ asosiy so'z bor ¦ has the key word",
-      missBadge: "добавь «черепаха» ¦ «toshbaqa» qo'sh ¦ add “tortoise”",
       placeholder: "2–3 главных слова ¦ 2–3 ta asosiy so'z ¦ 2–3 key words",
       footer: "Ментор сравнит запросы на заранее проверенных результатах. ¦ Mentor so'rovlarni oldindan tekshirilgan natijalarda solishtiradi. ¦ The mentor compares queries using results checked in advance.",
       notes: { min: 5 },

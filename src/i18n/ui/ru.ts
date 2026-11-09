@@ -70,4 +70,6 @@ export default {
   showCode: 'Код',
   showPage: 'Страница',
   tapToFlip: 'нажмите, чтобы открыть',
+  orderHint: 'Перетащи шаги в клетки по порядку',
+  spotFound: (f, t) => `Найдено: ${f} из ${t}`,
 } satisfies UiStrings;

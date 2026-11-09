@@ -12,7 +12,7 @@ import type { Locale } from '../types';
  */
 export const SEP = '¦';
 const ORDER: Locale[] = ['ru', 'uz', 'en'];
-const CODE_KEYS = new Set(['code', 'html', 'css', 'js', 'cmd', 'out', 'output', 'fix', 'files', 'url', 'value', 'icon', 'id', 'hits', 'year']);
+const CODE_KEYS = new Set(['code', 'html', 'css', 'js', 'cmd', 'out', 'output', 'fix', 'files', 'url', 'value', 'icon', 'id', 'hits', 'year', 'art']);
 const CYR = /[А-Яа-яЁё]/;
 
 export const problems: string[] = [];

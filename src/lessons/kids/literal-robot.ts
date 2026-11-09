@@ -37,7 +37,7 @@ export default kit({
         { say: "Точная команда: «Возьми лист со стола и положи в коробку». ¦ Aniq buyruq: «Stoldan varaqni ol va qutiga qo'y». ¦ An exact command: “Take the sheet from the desk and put it in the box.”", at: { p: [84, 66] }, pulse: ['box'] },
       ],
       takeaway: "В точной команде есть: предмет, место и действие. ¦ Aniq buyruqda: narsa, joy va harakat bor. ¦ An exact command has an object, a place and an action.",
-      notes: { min: 7 },
+      notes: { min: 6 },
     },
     {
       type: 'compare',
@@ -47,7 +47,23 @@ export default kit({
       left: { label: "Неточно ¦ Noaniq ¦ Vague", icon: '🤷', points: ["«Убери» ¦ «Yig'ishtir» ¦ “Tidy up”", "«Нарисуй что-нибудь» ¦ «Biror narsa chiz» ¦ “Draw something”", "«Иди туда» ¦ «U yerga bor» ¦ “Go over there”"] },
       right: { label: "Точно ¦ Aniq ¦ Exact", icon: '🎯', points: ["«Положи карандаш в стакан» ¦ «Qalamni stakanga sol» ¦ “Put the pencil in the cup”", "«Нарисуй красный круг в центре» ¦ «Markazda qizil doira chiz» ¦ “Draw a red circle in the middle”", "«Сделай 3 шага к двери» ¦ «Eshik tomon 3 qadam qo'y» ¦ “Take 3 steps towards the door”"] },
       verdict: "Точная команда работает одинаково у всех. ¦ Aniq buyruq hammada bir xil ishlaydi. ¦ An exact command works the same for everyone.",
-      notes: { min: 7 },
+      notes: { min: 5 },
+    },
+    {
+      type: 'order',
+      stage: 2,
+      title: "Научи робота чистить зубы ¦ Robotni tish yuvishga o'rgat ¦ Teach the robot to brush its teeth",
+      chat: "какой шаг первый? номер ¦ birinchi qadam qaysi? raqam ¦ which step comes first? a number",
+      items: [
+        "🪥 Возьми зубную щётку ¦ 🪥 Tish cho'tkasini ol ¦ 🪥 Pick up the toothbrush",
+        "🧴 Открой тюбик с пастой ¦ 🧴 Pasta tubigini och ¦ 🧴 Open the toothpaste",
+        "➖ Выдави на щётку немного пасты ¦ ➖ Cho'tkaga ozgina pasta siq ¦ ➖ Squeeze a little paste onto the brush",
+        "😁 Чисти зубы 2 минуты ¦ 😁 Tishlarni 2 daqiqa yuv ¦ 😁 Brush your teeth for 2 minutes",
+        "💧 Прополощи рот водой ¦ 💧 Og'izni suv bilan chay ¦ 💧 Rinse your mouth with water",
+        "🧼 Промой щётку и поставь на место ¦ 🧼 Cho'tkani yuvib, joyiga qo'y ¦ 🧼 Rinse the brush and put it back",
+      ],
+      takeaway: "Перепутаешь порядок — и робот будет чистить зубы сухой щёткой! ¦ Tartibni adashtirsang — robot tishni quruq cho'tka bilan yuvadi! ¦ Mix up the order and the robot brushes with a dry brush!",
+      notes: { say: ['Ментор-«робот» выполняет порядок из чата буквально: если паста после чистки — смешно показывает ошибку.'], min: 5 },
     },
     {
       type: 'mission',
@@ -59,7 +75,7 @@ export default kit({
         { title: "Какая команда точнее? ¦ Qaysi buyruq aniqroq? ¦ Which command is more exact?", choices: ["«Возьми синюю чашку с полки» ¦ «Javondan ko'k piyolani ol» ¦ “Take the blue cup from the shelf”", "«Возьми ту штуку» ¦ «Anovi narsani ol» ¦ “Take that thing”"], correct: 0, explain: "Есть предмет, цвет и место. ¦ Narsa, rang va joy bor. ¦ It has an object, a colour and a place." },
         { title: "Чего не хватает в «Положи книгу»? ¦ «Kitobni qo'y»da nima yetishmaydi? ¦ What's missing in “Put the book”?", choices: ["Места: куда положить ¦ Joy: qayerga qo'yish ¦ The place: where", "Ничего ¦ Hech narsa ¦ Nothing"], correct: 0, explain: "Без места робот положит куда угодно. ¦ Joysiz robot istalgan joyga qo'yadi. ¦ Without a place, the robot puts it anywhere." },
       ],
-      notes: { say: ['Каждый пишет инструкцию из 3 шагов «как налить стакан воды»; ментор выполняет одну буквально.'], min: 9 },
+      notes: { say: ['Каждый пишет инструкцию из 3 шагов «как налить стакан воды»; ментор выполняет одну буквально.'], min: 7 },
     },
     {
       type: 'finale',

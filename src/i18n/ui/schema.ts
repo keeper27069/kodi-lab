@@ -72,4 +72,6 @@ export interface UiStrings {
   showCode: string;
   showPage: string;
   tapToFlip: string;
+  orderHint: string;
+  spotFound: (found: number, total: number) => string;
 }

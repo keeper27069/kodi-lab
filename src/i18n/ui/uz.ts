@@ -70,4 +70,6 @@ export default {
   showCode: 'Kod',
   showPage: 'Sahifa',
   tapToFlip: 'ochish uchun bosing',
+  orderHint: 'Qadamlarni tartib bilan kataklarga sudrang',
+  spotFound: (f, t) => `Topildi: ${t} tadan ${f} ta`,
 } satisfies UiStrings;

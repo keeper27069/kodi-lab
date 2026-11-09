@@ -51,7 +51,7 @@ export default kit({
       title: "Ветка за 5 команд ¦ 5 ta buyruqda tarmoq ¦ A branch in 5 commands",
       chat: "как назовём ветку? ¦ tarmoqni qanday nomlaymiz? ¦ what shall we call the branch?",
       lines: [
-        { cmd: 'git branch', out: ['* main'], note: "Пока есть только main. Звёздочка — где мы сейчас. ¦ Hozircha faqat main bor. Yulduzcha — hozir qayerdamiz. ¦ Only main so far. The asterisk shows where we are." },
+        { cmd: 'git branch', out: ['* main'], note: "Пока есть только main. Значок * показывает, в какой ветке мы сейчас. ¦ Hozircha faqat main bor. «*» belgisi hozir qaysi branch'da turganimizni ko'rsatadi. ¦ Only main so far. The * mark shows which branch we're on." },
         { cmd: 'git switch -c feature/form', out: ["Switched to a new branch 'feature/form'"], note: "Создали ветку и сразу перешли в неё. ¦ Tarmoq yaratdik va darhol unga o'tdik. ¦ Created a branch and switched to it." },
         { cmd: 'git commit -am "Add order form"', out: ['[feature/form 8b1d0e2] Add order form'], note: "Коммит попал в ветку feature/form, main не тронут. ¦ Kommit feature/form tarmog'iga tushdi, main tegilmagan. ¦ The commit went to feature/form; main is untouched." },
         { cmd: 'git switch main', out: ["Switched to branch 'main'"], note: "Вернулись в main — формы здесь ещё нет! ¦ main'ga qaytdik — bu yerda forma hali yo'q! ¦ Back on main — the form isn't here yet!" },
@@ -119,7 +119,7 @@ export default kit({
         "Создайте ветку feature/footer, сделайте коммит и влейте в main. ¦ feature/footer tarmog'ini yarating, kommit qiling va main'ga qo'shing. ¦ Create feature/footer, commit, and merge it into main.",
         "Нарисуйте схему веток своего проекта. ¦ Loyihangiz tarmoqlari sxemasini chizing. ¦ Sketch your project's branches.",
       ],
-      takeaway: "Дальше: отладка, повторы и условия в Blockly. ¦ Keyingisi: Blockly'da xatolarni tuzatish, takrorlar va shartlar. ¦ Next: debugging, repeats and conditions in Blockly.",
+      takeaway: "Дальше: GitHub и Vercel — выкладываем проект в интернет. ¦ Keyingisi: GitHub va Vercel — loyihani internetga joylaymiz. ¦ Next: GitHub and Vercel — putting a project online.",
       notes: { min: 2 },
     },
   ],

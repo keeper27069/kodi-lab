@@ -70,4 +70,6 @@ export default {
   showCode: 'Code',
   showPage: 'Page',
   tapToFlip: 'click to open',
+  orderHint: 'Drag the steps into the slots in order',
+  spotFound: (f, t) => `Found ${f} of ${t}`,
 } satisfies UiStrings;

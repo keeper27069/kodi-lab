@@ -31,7 +31,7 @@ export default kit({
         { icon: '🔀', front: "3 · Перепутанный шаг ¦ 3 · O'rni almashgan qadam ¦ 3 · Swapped steps", back: "«Пей чай», а потом «завари» ¦ «Choy ich», keyin «damla» ¦ “Drink the tea”, then “brew it”" },
         { icon: '🌫️', front: "4 · Неточный шаг ¦ 4 · Noaniq qadam ¦ 4 · Vague step", back: "«Положи немного сахара» — сколько? ¦ «Ozgina shakar sol» — qancha? ¦ “Add some sugar” — how much?" },
       ],
-      notes: { min: 6 },
+      notes: { min: 5 },
     },
     {
       type: 'sort',
@@ -50,7 +50,22 @@ export default kit({
         { text: "Чай: «Налей воду, хлопни в ладоши, включи чайник» ¦ Choy: «Suv quy, qarsak chal, choynakni yoq» ¦ Tea: “Pour water, clap your hands, switch on the kettle”", zone: 'x' },
         { text: "Маршрут: «Иди немного прямо» ¦ Yo'l: «Biroz to'g'riga yur» ¦ Route: “Walk straight a bit”", zone: 'v' },
       ],
-      notes: { min: 9 },
+      notes: { min: 8 },
+    },
+    {
+      type: 'order',
+      stage: 2,
+      title: "Почини порядок: бутерброд ¦ Tartibni tuzat: buterbrod ¦ Fix the order: a sandwich",
+      chat: "пиши номера по порядку ¦ raqamlarni tartib bilan yoz ¦ write the numbers in order",
+      items: [
+        "🍞 Достань хлеб из пакета ¦ 🍞 Nonni paketdan ol ¦ 🍞 Take the bread out of the bag",
+        "🍽️ Положи ломтик на тарелку ¦ 🍽️ Bo'lakni likopchaga qo'y ¦ 🍽️ Put a slice on the plate",
+        "🧈 Намажь масло ¦ 🧈 Sariyog' surt ¦ 🧈 Spread the butter",
+        "🧀 Положи сыр сверху ¦ 🧀 Ustiga pishloq qo'y ¦ 🧀 Put cheese on top",
+        "😋 Приятного аппетита! ¦ 😋 Yoqimli ishtaha! ¦ 😋 Enjoy!",
+      ],
+      takeaway: "Поломка «не тот порядок» чинится перестановкой шагов. ¦ «Noto'g'ri tartib» buzilishi qadamlarning o'rnini almashtirib tuzatiladi. ¦ A “wrong order” break is fixed by rearranging the steps.",
+      notes: { min: 4 },
     },
     {
       type: 'mission',
@@ -62,7 +77,7 @@ export default kit({
         { title: "«1. Положи хлеб. 2. Намажь масло. 3. Достань хлеб из пакета». Какая поломка? ¦ «1. Nonni qo'y. 2. Sariyog' surt. 3. Nonni paketdan ol». Qanday buzilish? ¦ “1. Put down the bread. 2. Spread butter. 3. Take the bread out of the bag.” What break?", choices: ["Перепутанный: шаг 3 должен быть первым ¦ O'rni almashgan: 3-qadam birinchi bo'lishi kerak ¦ Swapped: step 3 should be first", "Лишний шаг ¦ Ortiqcha qadam ¦ An extra step"], correct: 0, explain: "Сначала достаём хлеб, потом всё остальное. ¦ Avval nonni olamiz, keyin qolganini. ¦ Take the bread out first, then the rest." },
         { title: "Как починить «Положи немного соли»? ¦ «Ozgina tuz sol»ni qanday tuzatish mumkin? ¦ How do you fix “Add a little salt”?", choices: ["«Положи пол-ложки соли» ¦ «Yarim qoshiq tuz sol» ¦ “Add half a spoon of salt”", "«Положи соль» ¦ «Tuz sol» ¦ “Add salt”"], correct: 0, explain: "Указали точное количество. ¦ Aniq miqdor ko'rsatildi. ¦ Now the amount is exact." },
       ],
-      notes: { min: 8 },
+      notes: { min: 6 },
     },
     {
       type: 'finale',

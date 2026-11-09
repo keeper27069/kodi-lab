@@ -8,6 +8,8 @@ import { PollReveal } from '../interactions/PollReveal';
 import { PredictSlider } from '../interactions/PredictSlider';
 import { ChatBoard } from '../interactions/ChatBoard';
 import { DragSort } from '../interactions/DragSort';
+import { DragOrder } from '../interactions/DragOrder';
+import { SpotDiff } from '../interactions/SpotDiff';
 import { CodeBlock } from '../code/CodeBlock';
 import { LiveCode } from '../code/LiveCode';
 import { PredictOutput } from '../code/PredictOutput';
@@ -34,6 +36,8 @@ import type {
   LiveScene,
   MissionScene,
   NumbersScene,
+  OrderScene,
+  SpotScene,
   OutputScene,
   PollScene,
   PredictScene,
@@ -98,7 +102,7 @@ function Poll() {
     <SceneFrame showTakeaway={picked != null}>
       <div className="col" style={{ height: '100%', gap: 22 }}>
         {s.question && <div className="kit-q">{s.question}</div>}
-        <PollReveal options={s.options} correct={s.correct} result={s.result} onPick={setPicked} columns={s.columns} />
+        <PollReveal options={s.options.map((o) => ({ ...o, art: o.art ? <span className="poll__art" dangerouslySetInnerHTML={{ __html: emojiHtml(o.art) }} /> : undefined }))} correct={s.correct} result={s.result} onPick={setPicked} columns={s.columns} />
       </div>
     </SceneFrame>
   );
@@ -163,6 +167,28 @@ function Sort() {
         explain={Object.fromEntries(s.items.flatMap((it, i) => (it.why ? [[`t${i}`, it.why]] : [])))}
         onChecked={() => setChecked(true)}
       />
+    </SceneFrame>
+  );
+}
+
+/* ───────── order ───────── */
+function Order() {
+  const s = useK<OrderScene>();
+  const [checked, setChecked] = useSceneState('checked', false);
+  return (
+    <SceneFrame showTakeaway={checked}>
+      <DragOrder items={s.items} onChecked={() => setChecked(true)} />
+    </SceneFrame>
+  );
+}
+
+/* ───────── spot the difference ───────── */
+function Spot() {
+  const s = useK<SpotScene>();
+  const [done, setDone] = useSceneState('done', false);
+  return (
+    <SceneFrame showTakeaway={done}>
+      <SpotDiff left={s.left} right={s.right} leftLabel={s.leftLabel} rightLabel={s.rightLabel} onAllFound={() => setDone(true)} />
     </SceneFrame>
   );
 }
@@ -653,6 +679,8 @@ export const KIT: Record<KitType, ComponentType> = {
   predict: Predict,
   board: Board,
   sort: Sort,
+  order: Order,
+  spot: Spot,
   cards: Cards,
   flow: Flow,
   timeline: Timeline,

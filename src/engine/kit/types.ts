@@ -42,7 +42,8 @@ export interface IntroScene extends Base {
 export interface PollScene extends Base {
   type: 'poll';
   question?: string;
-  options: { label: string; detail?: string }[];
+  /** art: optional HTML picture shown on top of the option */
+  options: { label: string; detail?: string; art?: string }[];
   correct?: number;
   result: string;
   columns?: number;
@@ -71,6 +72,19 @@ export interface SortScene extends Base {
   type: 'sort';
   zones: { id: string; label: string; icon?: string }[];
   items: { text: string; zone: string; why?: string }[];
+}
+/** Drag the steps into the right order (items are written in the CORRECT order; they are shuffled on screen) */
+export interface OrderScene extends Base {
+  type: 'order';
+  items: string[];
+}
+/** Spot the difference: two emoji pictures (rows of emoji separated by spaces); differing cells are clickable */
+export interface SpotScene extends Base {
+  type: 'spot';
+  left: string[];
+  right: string[];
+  leftLabel?: string;
+  rightLabel?: string;
 }
 export interface CardsScene extends Base {
   type: 'cards';
@@ -200,6 +214,8 @@ export type KitScene =
   | PredictScene
   | BoardScene
   | SortScene
+  | OrderScene
+  | SpotScene
   | CardsScene
   | FlowScene
   | TimelineScene
